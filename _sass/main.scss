@@ -1,3 +1,31 @@
 .current {
 	color: green;
 }
+
+.title_block {
+	height: 20%;
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 100px;
+}
+
+.content_superblock {
+	height: 80%;
+	width: 100%;
+	position: absolute;
+	top: 200px;
+}
+
+.navigator_block {
+	float: left;
+	display: inline-block;
+	width: 15%;
+}
+
+.content_block {
+	position: relative;
+	left: 0px;
+	display: inline-block;
+	width: 80%;
+}
