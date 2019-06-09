@@ -48,11 +48,20 @@
 	height: 100%;
 }
 
-.content_block {
+#tree_zero {
 	position: relative;
 	left: 0px;
 	display: inline-block;
 	width: 80%;
+        font-family: "Courier New";
+}
+
+#tree_one {
+        position: relative;
+        left: 0px;
+	top: 100px;
+        display: inline-block;
+        width: 80%;
         font-family: "Courier New";
 }
 

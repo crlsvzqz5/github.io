@@ -16,11 +16,33 @@
 	{% include navigator.html %}
     </div>
     <div class="content_superblock">
-	<div class="empty_block_left">
+	<div id="empty_block_left">
 	</div>
-	    <div class="content_block">
+	<div id="tree_zero">
 	    {{ content }}
+	</div>
+	<div id="tree_one">
 	</div>
     </div>
   </body>
+
+<script>
+function downTree(topicfile) {
+	var target_div, xhttp;
+	target_div = document.getElementById("tree_one");
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if(this.readyState == 4) {
+			if(this.status == 200) {
+				target_div.innerHTML = this.responseText;
+				target_div.scrollIntoView();
+			}
+		}
+	}
+	xhttp.open("GET", topicfile, true);
+	xhttp.send();
+	return;
+}
+</script>
+
 </html>
