@@ -1,7 +1,10 @@
-<nav>
+<nav id="homeabout">
 {% for item in site.data.navigator %}
 	<a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>
 		{{ item.name }}
-	</a><br>
+	</a>
+	{% if forloop.last == false %}
+		 - 
+	{% endif %}
 {% endfor %}
 </nav>

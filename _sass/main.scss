@@ -2,6 +2,12 @@
 	color: green;
 }
 
+#homeabout {
+	position: absolute;
+	right: 100px;
+	top: 10px;
+}
+
 #respectthe {
 	display: inline-block;
 }
@@ -35,11 +41,11 @@
         font-family: "Courier New";
 }
 
-.navigator_block {
+.empty_block_left {
 	float: left;
 	display: inline-block;
 	width: 15%;
-        font-family: "Courier New";
+	height: 100%;
 }
 
 .content_block {
