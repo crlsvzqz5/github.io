@@ -41,18 +41,21 @@
         font-family: "Courier New";
 }
 
-.empty_block_left {
+#empty_block_left {
 	float: left;
 	display: inline-block;
 	width: 15%;
 	height: 100%;
 }
 
-.treenode {
-	position: relative;
-	left: 0px;
+#alltreenodes {
 	display: inline-block;
 	width: 80%;
+}
+
+.treenode {
+	float: left;
+	width: 100%;
         font-family: "Courier New";
 }
 
