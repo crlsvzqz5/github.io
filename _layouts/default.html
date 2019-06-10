@@ -1,48 +1,83 @@
 <!doctype html>
 <html>
-  <head>
+<head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="/assets/css/styles.css">
 	<title>{{ page.title }}</title>
-  </head>
-  <body>
-    <div class="title_block">
-       <div id="respectthe">
+</head>
+
+<body>
+  <div class="title_block">
+     <div id="respectthe">
 	    <h1>respect the</h1>
-	</div>
-	<div id="boxlogo_container">
+     </div>
+     <div id="boxlogo_container">
 	    <img id="boxlogo" src="/assets/images/boxlogo.png">
-	</div>
+     </div>
 	{% include navigator.html %}
-    </div>
-    <div class="content_superblock">
-	<div id="empty_block_left">
-	</div>
-	<div id="tree_zero">
+  </div>
+
+  <div class="content_superblock">
+     <div id="empty_block_left">
+     </div>
+     <div id="tree0" class="treenode">
 	    {{ content }}
-	</div>
-	<div id="tree_one">
-	</div>
-    </div>
-  </body>
+     </div>
+  </div>
+</body>
 
 <script>
-function downTree(topicfile) {
-	var target_div, xhttp;
-	target_div = document.getElementById("tree_one");
+function insertAfter(newElement, referenceElement) {
+	referenceElement.parentElement.insertBefore(newElement, referenceElement.nextSibling);
+} 
+
+function getNumberOfNodes() {
+	return document.getElementsByClassName("treenode").length;
+}
+
+function remove_nodes_under_clicked_node(linkclicked) {
+	var linkclass = linkclicked.getAttribute("class");
+	var clicked_treelevel = parseInt(linkclass.substring(11, linkclass.length));
+	var nodes = document.getElementsByClassName("treenode");
+	var i;
+	for (i=getNumberOfNodes()-1; i>clicked_treelevel; i--) {
+		nodes[i].remove();
+	}
+	return clicked_treelevel;
+}
+
+function armLinksWithLocation(newNode, treelevel) {
+	var links = newNode.getElementsByTagName("a");
+	var i;
+	for (i=0; i<links.length; i++) {
+		links[i].setAttribute("class", "link_atnode" + treelevel.toString(10));
+	}
+	return;
+}
+
+function changeTreeNode(topicfile, linkclicked) {
+	var target_div, xhttp, clicked_treelevel;
+	var clicked_treelevel = remove_nodes_under_clicked_node(linkclicked);
+	target_div = document.createElement("div");
+	target_div.setAttribute("id", "tree" + (clicked_treelevel + 1));
+	target_div.setAttribute("class", "treenode");
+	insertAfter(target_div, document.getElementById("tree" + clicked_treelevel.toString(10)));
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if(this.readyState == 4) {
 			if(this.status == 200) {
 				target_div.innerHTML = this.responseText;
+				armLinksWithLocation(target_div, clicked_treelevel + 1);
 				target_div.scrollIntoView();
 			}
 		}
 	}
 	xhttp.open("GET", topicfile, true);
 	xhttp.send();
+ 
 	return;
 }
+
 </script>
 
 </html>
