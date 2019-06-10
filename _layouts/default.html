@@ -29,33 +29,13 @@
 </body>
 
 <script>
-function insertAfter(newElement, referenceElement) {
-	referenceElement.parentElement.insertBefore(newElement, referenceElement.nextSibling);
-} 
-
-function getNumberOfNodes() {
-	return document.getElementsByClassName("treenode").length;
-}
-
-function remove_nodes_under_clicked_node(linkclicked) {
-	var linkclass = linkclicked.getAttribute("class");
-	var clicked_treelevel = parseInt(linkclass.substring(11, linkclass.length));
-	var nodes = document.getElementsByClassName("treenode");
-	var i;
-	for (i=getNumberOfNodes()-1; i>clicked_treelevel; i--) {
-		nodes[i].remove();
-	}
-	return clicked_treelevel;
-}
-
-function armLinksWithLocation(newNode, treelevel) {
-	var links = newNode.getElementsByTagName("a");
-	var i;
-	for (i=0; i<links.length; i++) {
-		links[i].setAttribute("class", "link_atnode" + treelevel.toString(10));
-	}
-	return;
-}
+// ###################################################
+// SCROLLING HELPERS
+// ###################################################
+var target_top;
+var target_top_eff;
+var limit_seen;
+var clicked_treelevel;
 
 function scroll_curve(total, fractiondone) {
 	var direction = Math.sign(total);
@@ -68,7 +48,6 @@ function scroll_curve(total, fractiondone) {
 
 function smooth_scroll(begPos, tgtPos) {
 	if(Math.abs(tgtPos - window.pageYOffset) < 5) {
-		//alert("Scrolling complete");
 		return;
 	}
 	var total = tgtPos - begPos;
@@ -78,19 +57,61 @@ function smooth_scroll(begPos, tgtPos) {
 }
 
 function start_smooth_scroll(tgtElem) {
-	var tgtPos = tgtElem.getBoundingClientRect().top;
+	var tgtPos = window.pageYOffset + tgtElem.getBoundingClientRect().top;
+	target_top = tgtPos;
 	var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
 		document.documentElement.clientHeight, document.documentElement.scrollHeight, 
 		document.documentElement.offsetHeight) - window.innerHeight;
+	limit_seen = limit;
 	if (tgtPos >= limit) {
 		tgtPos = limit;
 	}
+	target_top_eff = tgtPos;
 	smooth_scroll(window.pageYOffset, tgtPos);
+}
+// ###################################################
+
+
+// ###################################################
+// HELPERS FOR INSERTING NEW DIVS IN TOPIC TREE
+// ###################################################
+var targeted_div;
+
+function insertAfter(newElement, referenceElement) {
+	referenceElement.parentElement.insertBefore(newElement, referenceElement.nextSibling);
+} 
+
+function getNumberOfNodes() {
+	return document.getElementsByClassName("treenode").length;
+}
+
+function remove_nodes_under_clicked_node() {
+	var nodes = document.getElementsByClassName("treenode");
+	var i;
+	for (i=getNumberOfNodes()-1; i>clicked_treelevel; i--) {
+		nodes[i].remove();
+	}
+}
+
+function get_clicked_treelevel(linkclicked) {
+	var linkclass = linkclicked.getAttribute("class");
+	var level = parseInt(linkclass.substring(11, linkclass.length));
+	return level;	
+}
+
+function armLinksWithLocation(newNode, treelevel) {
+	var links = newNode.getElementsByTagName("a");
+	var i;
+	for (i=0; i<links.length; i++) {
+		links[i].setAttribute("class", "link_atnode" + treelevel.toString(10));
+	}
+	return;
 }
 
 function changeTreeNode(topicfile, linkclicked) {
-	var target_div, xhttp, clicked_treelevel;
-	var clicked_treelevel = remove_nodes_under_clicked_node(linkclicked);
+	var target_div, xhttp;
+	clicked_treelevel = get_clicked_treelevel(linkclicked);
+	remove_nodes_under_clicked_node();
 	target_div = document.createElement("div");
 	target_div.setAttribute("id", "tree" + (clicked_treelevel + 1));
 	target_div.setAttribute("class", "treenode");
@@ -102,6 +123,7 @@ function changeTreeNode(topicfile, linkclicked) {
 				target_div.innerHTML = this.responseText;
 				armLinksWithLocation(target_div, clicked_treelevel + 1);
 				start_smooth_scroll(target_div);
+				targeted_div = target_div;
 			}
 		}
 	}
@@ -110,6 +132,7 @@ function changeTreeNode(topicfile, linkclicked) {
  
 	return;
 }
+// ###################################################
 
 </script>
 
