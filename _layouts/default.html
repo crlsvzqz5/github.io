@@ -57,18 +57,35 @@ function armLinksWithLocation(newNode, treelevel) {
 	return;
 }
 
-function smooth_scroll(tgtElem) {
+function scroll_curve(total, fractiondone) {
+	var direction = Math.sign(total);
+	total = Math.abs(total);
+	sofar = Math.abs(fractiondone);
+	var magnitude = Math.max(total/30, 1)
+	var delta = direction * ( magnitude*Math.pow(2, -1*Math.pow(4*fractiondone-2, 2)) + 1 );
+	return delta;
+}
+
+function smooth_scroll(begPos, tgtPos) {
+	if(Math.abs(tgtPos - window.pageYOffset) < 5) {
+		//alert("Scrolling complete");
+		return;
+	}
+	var total = tgtPos - begPos;
+	var delta = scroll_curve(total, (window.pageYOffset - begPos)/total);
+	window.scrollTo(0, window.pageYOffset + delta);
+	setTimeout(function() {smooth_scroll(begPos, tgtPos);}, 10);
+}
+
+function start_smooth_scroll(tgtElem) {
 	var tgtPos = tgtElem.getBoundingClientRect().top;
 	var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
 		document.documentElement.clientHeight, document.documentElement.scrollHeight, 
 		document.documentElement.offsetHeight) - window.innerHeight;
-	//alert("Target position = " + tgtPos + "\nLimit = " + limit + "\npageYOffset = " + window.pageYOffset);
 	if (tgtPos >= limit) {
 		tgtPos = limit;
 	}
-	while (window.pageYOffset != tgtPos) {
-		window.scrollTo(0, tgtPos);
-	}
+	smooth_scroll(window.pageYOffset, tgtPos);
 }
 
 function changeTreeNode(topicfile, linkclicked) {
@@ -84,7 +101,7 @@ function changeTreeNode(topicfile, linkclicked) {
 			if(this.status == 200) {
 				target_div.innerHTML = this.responseText;
 				armLinksWithLocation(target_div, clicked_treelevel + 1);
-				smooth_scroll(target_div);
+				start_smooth_scroll(target_div);
 			}
 		}
 	}
