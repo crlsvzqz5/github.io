@@ -57,6 +57,20 @@ function armLinksWithLocation(newNode, treelevel) {
 	return;
 }
 
+function smooth_scroll(tgtElem) {
+	var tgtPos = tgtElem.getBoundingClientRect().top;
+	var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
+		document.documentElement.clientHeight, document.documentElement.scrollHeight, 
+		document.documentElement.offsetHeight) - window.innerHeight;
+	//alert("Target position = " + tgtPos + "\nLimit = " + limit + "\npageYOffset = " + window.pageYOffset);
+	if (tgtPos >= limit) {
+		tgtPos = limit;
+	}
+	while (window.pageYOffset != tgtPos) {
+		window.scrollTo(0, tgtPos);
+	}
+}
+
 function changeTreeNode(topicfile, linkclicked) {
 	var target_div, xhttp, clicked_treelevel;
 	var clicked_treelevel = remove_nodes_under_clicked_node(linkclicked);
@@ -70,7 +84,7 @@ function changeTreeNode(topicfile, linkclicked) {
 			if(this.status == 200) {
 				target_div.innerHTML = this.responseText;
 				armLinksWithLocation(target_div, clicked_treelevel + 1);
-				target_div.scrollIntoView();
+				smooth_scroll(target_div);
 			}
 		}
 	}

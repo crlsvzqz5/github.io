@@ -56,7 +56,11 @@
 .treenode {
 	float: left;
 	width: 100%;
-        font-family: "Courier New";
+	height: 500px;
+        font-family: "Courier New";	
+}
+
+.treenode:not(#tree0) {
 }
 
 .topic_fig {
