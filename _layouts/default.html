@@ -9,7 +9,7 @@
 <body>
   <div class="title_block">
      <div id="respectthe">
-	    <h1>respect the</h1>
+	    <h1>r e s p e c t<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspt h e<br></h1>
      </div>
      <div id="boxlogo_container">
 	    <img id="boxlogo" src="/assets/images/boxlogo.png">
@@ -19,7 +19,7 @@
 
   <div class="content_superblock">
      <div id="alltreenodes">
-        <div id="tree0" class="treenode">
+        <div id="tree0" class="treenode" {% if page.title == "About" %} style="color:white;" {% endif %}>
 	    {{ content }}
         </div>
      </div>

@@ -1,10 +1,10 @@
 <nav id="homeabout">
 {% for item in site.data.navigator %}
-	<a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>
+	<a href="{{ item.link }}" {% if page.url == item.link %}class="current" {% else %}class="notcurrent" {% endif %}>
 		{{ item.name }}
 	</a>
 	{% if forloop.last == false %}
-		 - 
+		<span style="color:white"> - </span>
 	{% endif %}
 {% endfor %}
 </nav>

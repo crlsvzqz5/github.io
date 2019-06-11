@@ -2,12 +2,16 @@ body {
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
-	background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('/assets/images/network.jpg');
+	background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), url('/assets/images/network.jpg');
 	background-repeat: no-repeat;
 }
 
 .current {
 	color: green;
+}
+
+.notcurrent {
+	color: white;
 }
 
 #homeabout {
@@ -18,6 +22,8 @@ body {
 
 #respectthe {
 	display: inline-block;
+	color: white;
+	font-size: 20px;
 }
 
 #boxlogo_container {
@@ -28,8 +34,10 @@ body {
 }
 
 #boxlogo {
-	width: 100px;
-	height: 80px;
+	width: 150px;
+	height: 120px;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+	filter: grayscale(100%);
 }
 
 .title_block {
