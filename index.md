@@ -14,7 +14,6 @@ Select a topic on the left to begin exploring.
 <img class="topic_img" src="{{ item.image }}"/>
 <figcaption>{{ item.caption }}</figcaption>
 </figure>
-<!-- <button onclick="downTree('/fpga_topics.html')">click</button> -->
 </a>
 {% endfor %}
 </div>

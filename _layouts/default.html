@@ -29,12 +29,12 @@
 </body>
 
 <script>
+
+document.getElementById("tree0").style.height = window.innerHeight + "px";
+
 // ###################################################
 // SCROLLING HELPERS
-// ###################################################
-var target_top;
-var target_top_eff;
-var limit_seen;
+// ###################################################]
 var clicked_treelevel;
 
 function scroll_curve(total, fractiondone) {
@@ -115,6 +115,7 @@ function changeTreeNode(topicfile, linkclicked) {
 	target_div = document.createElement("div");
 	target_div.setAttribute("id", "tree" + (clicked_treelevel + 1));
 	target_div.setAttribute("class", "treenode");
+	target_div.style.height = window.innerHeight + "px";
 	insertAfter(target_div, document.getElementById("tree" + clicked_treelevel.toString(10)));
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
