@@ -18,9 +18,6 @@
   </div>
 
   <div class="content_superblock">
-<!--     <div id="empty_block_left">
-     </div>
--->
      <div id="alltreenodes">
         <div id="tree0" class="treenode">
 	    {{ content }}
@@ -32,6 +29,8 @@
 <script>
 
 document.getElementById("tree0").style.height = window.innerHeight + "px";
+document.body.style.backgroundSize = window.innerWidth + "px " + window.innerHeight + "px";
+//document.body.style.backgroundPosition = "top";
 
 // ###################################################
 // SCROLLING HELPERS

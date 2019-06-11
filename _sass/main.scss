@@ -1,7 +1,9 @@
-html, body {
+body {
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
+	background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('/assets/images/network.jpg');
+	background-repeat: no-repeat;
 }
 
 .current {
