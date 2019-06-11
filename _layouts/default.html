@@ -95,7 +95,7 @@ function remove_nodes_under_clicked_node() {
 }
 
 function get_clicked_treelevel(linkclicked) {
-	var linkclass = linkclicked.getAttribute("class");
+	var linkclass = linkclicked.getAttribute("id");
 	var level = parseInt(linkclass.substring(11, linkclass.length));
 	return level;	
 }
@@ -104,12 +104,13 @@ function armLinksWithLocation(newNode, treelevel) {
 	var links = newNode.getElementsByTagName("a");
 	var i;
 	for (i=0; i<links.length; i++) {
-		links[i].setAttribute("class", "link_atnode" + treelevel.toString(10));
+		links[i].setAttribute("id", "link_atnode" + treelevel.toString(10));
+		links[i].setAttribute("class", "topiclink"); // To bind CSS styles
 	}
 	return;
 }
 
-var divheightratio = 0.9;
+var divheightratio = 0.8;
 function changeTreeNode(topicfile, linkclicked) {
 	var target_div, xhttp;
 	clicked_treelevel = get_clicked_treelevel(linkclicked);
@@ -117,7 +118,7 @@ function changeTreeNode(topicfile, linkclicked) {
 	target_div = document.createElement("div");
 	target_div.setAttribute("id", "tree" + (clicked_treelevel + 1));
 	target_div.setAttribute("class", "treenode");
-	target_div.style.height = window.innerHeight*divheightratio + "px";
+	target_div.style.height = window.innerHeight + "px";
 	insertAfter(target_div, document.getElementById("tree" + clicked_treelevel.toString(10)));
 
 	xhttp = new XMLHttpRequest();
@@ -128,10 +129,16 @@ function changeTreeNode(topicfile, linkclicked) {
 				armLinksWithLocation(target_div, clicked_treelevel + 1);
 				start_smooth_scroll(target_div);
 				var imgsrc = target_div.getElementsByClassName("metainfo")[0].getAttribute("value");
-				target_div.style.backgroundImage = "url('" + imgsrc + "')";
+				target_div.style.backgroundImage = "linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('" + imgsrc + "')";
+				target_div.style.backgroundPosition = "center";
 				target_div.style.backgroundRepeat = "no-repeat";
 				target_div.style.backgroundSize = target_div.offsetWidth + "px " + 
-					Math.ceil(target_div.offsetHeight*divheightratio) + "px";	
+					Math.ceil(target_div.offsetHeight*divheightratio) + "px";
+				target_div.style.opacity = "1";	
+				tlinks = target_div.getElementsByClassName("topiclink");
+				for (var i=0; i<tlinks.length; i++) {
+					tlinks[i].style.top = Math.floor(Math.ceil(target_div.offsetHeight*divheightratio)/2.1) + "px";
+				}
 			}
 		}
 	}
