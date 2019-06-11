@@ -18,8 +18,9 @@
   </div>
 
   <div class="content_superblock">
-     <div id="empty_block_left">
+<!--     <div id="empty_block_left">
      </div>
+-->
      <div id="alltreenodes">
         <div id="tree0" class="treenode">
 	    {{ content }}
@@ -108,6 +109,7 @@ function armLinksWithLocation(newNode, treelevel) {
 	return;
 }
 
+var divheightratio = 0.9;
 function changeTreeNode(topicfile, linkclicked) {
 	var target_div, xhttp;
 	clicked_treelevel = get_clicked_treelevel(linkclicked);
@@ -115,8 +117,9 @@ function changeTreeNode(topicfile, linkclicked) {
 	target_div = document.createElement("div");
 	target_div.setAttribute("id", "tree" + (clicked_treelevel + 1));
 	target_div.setAttribute("class", "treenode");
-	target_div.style.height = window.innerHeight + "px";
+	target_div.style.height = window.innerHeight*divheightratio + "px";
 	insertAfter(target_div, document.getElementById("tree" + clicked_treelevel.toString(10)));
+
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if(this.readyState == 4) {
@@ -124,7 +127,11 @@ function changeTreeNode(topicfile, linkclicked) {
 				target_div.innerHTML = this.responseText;
 				armLinksWithLocation(target_div, clicked_treelevel + 1);
 				start_smooth_scroll(target_div);
-				targeted_div = target_div;
+				var imgsrc = target_div.getElementsByClassName("metainfo")[0].getAttribute("value");
+				target_div.style.backgroundImage = "url('" + imgsrc + "')";
+				target_div.style.backgroundRepeat = "no-repeat";
+				target_div.style.backgroundSize = target_div.offsetWidth + "px " + 
+					Math.ceil(target_div.offsetHeight*divheightratio) + "px";	
 			}
 		}
 	}
