@@ -43,7 +43,7 @@ html, body {
 	height: 80%;
 	width: 100%;
 	position: absolute;
-	top: 150px;
+	top: 300px;
         font-family: "Courier New";
 }
 
@@ -89,4 +89,9 @@ a {
 
 .topiclink {
 	position: relative;
+}
+
+.topiclinkHOME {
+	position: relative;
+	top: -100px;
 }
