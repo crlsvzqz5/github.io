@@ -3,7 +3,7 @@ layout: default
 title: home
 ---
 
-<div style="position:relative; top:100px;">
+<div style="position:relative;">
 {% for item in site.data.home_topics %}
 <a href="#" onclick="changeTreeNode('{{ item.link }}', this); return false;" id="link_atnode0" class="topiclinkHOME">
 <figure class="topic_fig">
