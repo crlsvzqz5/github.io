@@ -30,11 +30,9 @@
 
 document.getElementById("tree0").style.height = window.innerHeight + "px";
 document.body.style.backgroundSize = window.innerWidth + "px " + window.innerHeight + "px";
-var tree0_topicfigs = document.getElementById("tree0").getElementsByClassName("topic_fig");
-for(var i=0; i<tree0_topicfigs.length; i++) {
-	tree0_topicfigs[i].style.position = "absolute";
-	tree0_topicfigs[i].style.top = window.innerHeight/2 + "px";
-}
+var whitetopics = document.getElementById("tree0").firstChild;
+whitetopics.style.top = window.innerHeight/2 - whitetopics.getBoundingClientRect().top; 
+
 	
 // ###################################################
 // SCROLLING HELPERS
