@@ -122,7 +122,97 @@ a {
 
 @media all and (max-device-width: 499px) {
 
-body{width:100%;height:100%;margin:0px;padding:0px}.current{color:green}.notcurrent{color:black}#homeabout{position:absolute;right:100px;top:00px}#respectthe{display:inline-block;color:black;font-size:30px}#boxlogo_container{display:inline-block;margin-left:15px;position:relative;top:40px}#boxlogo{width:230px;height:200px;-webkit-filter:grayscale(100%);filter:grayscale(100%)}.title_block{height:20%;width:100%;text-align:center;position:absolute;top:50px;font-family:"Courier New"}.content_superblock{height:80%;width:100%;float:left;margin:0px;padding:0px;position:absolute;top:370px;font-family:"Courier New";background:linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),url("/assets/images/network.jpg");background-repeat:no-repeat;background-size:cover;background-position:center}#empty_block_left{float:left;display:inline-block;width:15%;height:100%}#alltreenodes{display:inline-block;width:100%}.treenode{position:relative;left:0px;top:0px;margin-bottom:-16px;padding:0px;text-align:center;width:100%;font-family:"Courier New"}.topic_fig{width:25%;text-align:center;display:inline-block}.topic_img{width:100%}a{text-decoration:none}.topiclink{position:relative}.topiclinkHOME{position:relative;top:-100px}
+body{
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px
+}
+
+.current{color:green}
+
+.notcurrent{color:black}
+
+#homeabout{
+	position: absolute; 
+	left: 50px; 
+	top: -20px; 
+	font-size:40px; 
+}
+
+
+#respectthe{
+	display:inline-block;
+	color:black;
+	font-size:30px;
+}
+
+#boxlogo_container{
+	display:inline-block;
+	margin-left:15px;
+	position:relative;
+	top:40px
+}
+
+#boxlogo{
+	width:230px;
+	height:200px;
+	-webkit-filter:grayscale(100%);
+	filter:grayscale(100%)
+}
+
+.title_block{
+	height:20%;
+	width:100%;
+	text-align:center;
+	position:absolute;
+	top:50px;
+	font-family:"Courier New"
+}
+
+.content_superblock{
+	height:80%;
+	width:100%;
+	float:left;
+	margin:0px;
+	padding:0px;
+	position:absolute;
+	top:350px;
+	font-family:"Courier New";
+	background:linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),url("/assets/images/network.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center
+}
+
+#empty_block_left{float:left;display:inline-block;width:15%;height:100%}
+
+#alltreenodes{display:inline-block;width:100%}
+
+.treenode{
+	position:relative;
+	left:0px;
+	top:0px;
+	margin-bottom:-16px;
+	padding:0px;
+	text-align:center;
+	width:100%;
+	font-family:"Courier New"
+}
+
+.topic_fig{
+	width:25%;
+	text-align:center;
+	display:inline-block
+}
+
+.topic_img{width:100%}
+
+a{text-decoration:none}
+
+.topiclink{position:relative}
+
+.topiclinkHOME{position:relative;top:-100px}
 
 
 }
