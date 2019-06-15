@@ -30,7 +30,10 @@
 
 document.getElementById("tree0").style.height = window.innerHeight + "px";
 document.body.style.backgroundSize = window.innerWidth + "px " + window.innerHeight + "px";
+var whitetopics = document.getElementById("tree0").firstElementChild;
+whitetopics.style.top = window.innerHeight/2 - whitetopics.getBoundingClientRect().top + "px"; 
 
+	
 // ###################################################
 // SCROLLING HELPERS
 // ###################################################]
