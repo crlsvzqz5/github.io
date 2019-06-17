@@ -39,7 +39,9 @@ var fraction_down = 0.5;
 fraction_down = 0.2; 
 {% endif %} 
 whitetopics.style.top = (window.innerHeight - document.getElementById("CS").getBoundingClientRect().top)*fraction_down 
-	- whitetopics.offsetHeight/2 + "px"; 
+	{% if page.title == "home" %}
+		- whitetopics.offsetHeight/2 
+	{% endif %} + "px"; 
 	
 // ###################################################
 // SCROLLING HELPERS
