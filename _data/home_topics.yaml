@@ -1,6 +1,6 @@
 - caption: FPGA Stuff
   image: /assets/images/fpga.png
-  link: /Topics/fpga.html
+  link: /Topics/FPGA/fpga.html
 - caption: Machine Learning
   image: /assets/images/nn.png
-  link: /Topics/fpga.html
+  link: /Topics//ML/ml.html

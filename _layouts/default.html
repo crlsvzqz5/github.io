@@ -19,10 +19,10 @@
 
   <div class="content_superblock" id="CS">
      <div id="alltreenodes">
-        <div id="tree0" class="treenode" {% if page.title == "About" %} style="color:white;" {% endif %}>
-	   {% if page.title == "About" %} <div style="position:relative;"> {% endif %}
+        <div id="tree0" class="treenode" style="color:white;">
+	   {% if page.title != "home" %} <div style="position:relative;" id="textdiv"> {% endif %}
 	    {{ content }}
-	   {% if page.title == "About" %} </div> {% endif %}    
+	   {% if page.title != "home" %} </div> {% endif %}    
         </div>
      </div>
   </div>
@@ -31,10 +31,11 @@
 <script>
 
 document.getElementById("tree0").style.height = window.innerHeight + "px";
+//document.getElementById("tree0").style.overflow = "scroll";
 document.body.style.backgroundSize = window.innerWidth + "px " + window.innerHeight + "px";
 var whitetopics = document.getElementById("tree0").firstElementChild;
 var fraction_down = 0.5;
-{% if page.title == "About" %}
+{% if page.title != "home" %}
 fraction_down = 0.2; 
 {% endif %} 
 whitetopics.style.top = (window.innerHeight - document.getElementById("CS").getBoundingClientRect().top)*fraction_down + "px"; 
@@ -138,9 +139,11 @@ function changeTreeNode(topicfile, linkclicked) {
 				target_div.style.backgroundImage = "linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('" + imgsrc + "')";
 				target_div.style.backgroundPosition = "center";
 				target_div.style.backgroundRepeat = "no-repeat";
-				target_div.style.backgroundSize = target_div.offsetWidth + "px " + 
+				//target_div.style.backgroundSize = target_div.offsetWidth + "px " + 
 					Math.ceil(target_div.offsetHeight*divheightratio) + "px";
 				//target_div.style.backgroundSize = "cover " + Math.ceil(target_div.offsetHeight*divheightratio) + "px";
+				target_div.style.backgroundSize = "cover ";
+				target_div.style.backgroundAttachment = "fixed";
 				tlinks = target_div.getElementsByClassName("topiclink");
 				for (var i=0; i<tlinks.length; i++) {
 					tlinks[i].style.top = Math.floor(Math.ceil(target_div.offsetHeight*divheightratio)/2.1) + "px";
