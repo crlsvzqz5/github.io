@@ -5,13 +5,13 @@ body {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
-	background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), url('/assets/images/network.jpg');
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url('/assets/images/network.jpg');
         background-repeat: no-repeat;
         background-size: cover;
 	background-position: center;
-        //-webkit-background-size: cover;
-        //-moz-background-size: cover;
-        //-o-background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
 	background-attachment: fixed;
 }
 
@@ -134,15 +134,14 @@ body{
 	height:100%;
 	margin:0px;
 	padding:0px;
-	background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url('/assets/images/network_mobile.jpg');
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url('/assets/images/network_mobile.jpg');
         background-repeat: no-repeat;
         background-size: cover;
 	background-position: center;
-        //-webkit-background-size: cover;
-        //-moz-background-size: cover;
-        //-o-background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
 	background-attachment: fixed;
-
 }
 
 .current{
