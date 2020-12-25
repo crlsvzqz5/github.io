@@ -5,5 +5,10 @@ title: About
 
 ## About me
 
-My name is Carlos. Check out my <a href="https://github.com/respectthebox">Github</a>!
+Hello Nat.  
 
+Let's play a game.    
+
+26°01'29.6"N 80°17'19.1"W  
+
+Look up. 
