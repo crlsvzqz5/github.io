@@ -1,2 +1,2 @@
 # <a href="https://fullprocess.github.io">fullprocess.github.io</a>
-Old personal website, lo longer active
+Old personal website, no longer active
